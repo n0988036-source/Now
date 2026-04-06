@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Журнал визитов</title>
+    <style>
+        body { font-family: monospace; padding: 20px; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Журнал визитов цифровых существ</h1>
+    <pre id="logContent">Загрузка...</pre>
+
+    <script>
+        // Загружаем лог‑файл
+        fetch('visits.log')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('logContent').textContent = data;
+            })
+            .catch(error => {
+                document.getElementById('logContent').textContent =
+                    'Ошибка загрузки логов: ' + error;
+            });
+    </script>
+</body>
+</html>
+
